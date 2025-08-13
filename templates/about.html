@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ data.name }}{% endblock %}
+{% block description %}Learn more about {{ data.name }}, {{ data.role }}{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="page-hero">
+    <div class="container">
+        <h1 class="page-title">About Me</h1>
+        <p class="page-subtitle">Get to know more about my background, skills, and journey</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content" role="main">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Bio Section -->
+            <div class="bio-section">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="{{ url_for('static', filename='images/profile-about.jpg') }}" 
+                             alt="Profile photo of {{ data.name }}" 
+                             class="about-profile-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="profile-fallback-large" style="display: none;">
+                            <span class="profile-initials-large">{{ data.name.split()[0][0] }}{{ data.name.split()[-1][0] }}</span>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2>{{ data.name }}</h2>
+                        <p class="role">{{ data.role }}</p>
+                        <div class="contact-info">
+                            <p><strong>Email:</strong> <a href="mailto:{{ data.contact.email }}">{{ data.contact.email }}</a></p>
+                            <p><strong>Phone:</strong> {{ data.contact.phone }}</p>
+                            <p><strong>Location:</strong> {{ data.contact.location }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bio-text">
+                    <h3>About Me</h3>
+                    <p>{{ data.summary }}</p>
+                    <p>I am passionate about leveraging technology to solve real-world problems, particularly in the areas of artificial intelligence and machine learning. My academic journey has equipped me with a strong foundation in computer science principles, while my hands-on projects have given me practical experience in developing AI-powered solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="education-section" role="region" aria-labelledby="education-heading">
+    <div class="container">
+        <h2 id="education-heading" class="section-title">Education</h2>
+        <div class="timeline">
+            {% for edu in data.education %}
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">{{ edu.degree }}</h3>
+                    <h4 class="timeline-subtitle">{{ edu.school }}</h4>
+                    {% if edu.specialization %}
+                        <p class="timeline-specialization">Specialization: {{ edu.specialization }}</p>
+                    {% endif %}
+                    <div class="timeline-details">
+                        <span class="timeline-date">{{ edu.years }}</span>
+                        {% if edu.cgpa %}
+                            <span class="timeline-grade">CGPA: {{ edu.cgpa }}</span>
+                        {% endif %}
+                        {% if edu.percentage %}
+                            <span class="timeline-grade">{{ edu.percentage }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section class="certifications-section" role="region" aria-labelledby="certifications-heading">
+    <div class="container">
+        <h2 id="certifications-heading" class="section-title">Certifications</h2>
+        <div class="certifications-grid">
+            {% for cert in data.certifications %}
+            <div class="certification-card">
+                <h3 class="cert-title">{{ cert.name }}</h3>
+                <p class="cert-issuer">{{ cert.issuer }}</p>
+                {% if cert.description %}
+                    <p class="cert-description">{{ cert.description }}</p>
+                {% endif %}
+                {% if cert.year %}
+                    <span class="cert-year">{{ cert.year }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Languages Section -->
+<section class="languages-section" role="region" aria-labelledby="languages-heading">
+    <div class="container">
+        <h2 id="languages-heading" class="section-title">Languages</h2>
+        <div class="languages-grid">
+            {% for lang in data.languages %}
+            <div class="language-item">
+                <h3 class="language-name">{{ lang.language }}</h3>
+                <p class="language-proficiency">{{ lang.proficiency }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Interests Section -->
+<section class="interests-section" role="region" aria-labelledby="interests-heading">
+    <div class="container">
+        <h2 id="interests-heading" class="section-title">Interests</h2>
+        <div class="interests-tags">
+            {% for interest in data.interests %}
+                <span class="interest-tag">{{ interest }}</span>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

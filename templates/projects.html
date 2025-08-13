@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - {{ data.name }}{% endblock %}
+{% block description %}Explore the projects and work by {{ data.name }}{% endblock %}
+
+{% block content %}
+<!-- Projects Hero Section -->
+<section class="page-hero">
+    <div class="container">
+        <h1 class="page-title">My Projects</h1>
+        <p class="page-subtitle">A showcase of my technical projects, from AI applications to web development</p>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="projects-section" role="main">
+    <div class="container">
+        <div class="projects-grid">
+            {% for project in data.projects %}
+            <article class="project-card detailed">
+                <div class="project-header">
+                    <h2 class="project-title">{{ project.name }}</h2>
+                    <span class="project-date">{{ project.date }}</span>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-description">
+                        <h3>Description</h3>
+                        <p>{{ project.description }}</p>
+                    </div>
+
+                    <div class="project-responsibilities">
+                        <h3>Key Responsibilities</h3>
+                        <ul>
+                            {% for responsibility in project.responsibilities %}
+                                <li>{{ responsibility }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="project-outcomes">
+                        <h3>Outcomes & Impact</h3>
+                        <ul>
+                            {% for outcome in project.outcomes %}
+                                <li>{{ outcome }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="project-tech">
+                        <h4>Technologies Used</h4>
+                        <div class="tech-tags">
+                            {% for tech in project.stack %}
+                                <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="project-links">
+                        {% if project.links.code != '#' %}
+                            <a href="{{ project.links.code }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                <span>View Code</span>
+                            </a>
+                        {% else %}
+                            <span class="btn btn-disabled">Code: Private Repository</span>
+                        {% endif %}
+
+                        {% if project.links.demo != '#' %}
+                            <a href="{{ project.links.demo }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                                <span>Live Demo</span>
+                            </a>
+                        {% else %}
+                            <span class="btn btn-disabled">Demo: Not Available</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <!-- Empty state if no projects -->
+        {% if not data.projects %}
+        <div class="empty-state">
+            <h2>Projects Coming Soon</h2>
+            <p>I'm currently working on exciting new projects. Check back soon to see my latest work!</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills-section" role="region" aria-labelledby="skills-heading">
+    <div class="container">
+        <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+        <div class="skills-detailed">
+            <div class="skill-category">
+                <h3 class="skill-category-title">Programming Languages</h3>
+                <div class="skill-items">
+                    {% for skill in data.skills.languages %}
+                    <div class="skill-item">
+                        <span class="skill-name">{{ skill }}</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: {% if skill == 'Python' %}90{% elif skill == 'C' %}80{% elif skill == 'Java' %}60{% else %}70{% endif %}%"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title">Frameworks & Libraries</h3>
+                <div class="skill-tags">
+                    {% for skill in data.skills.frameworks %}
+                        <span class="skill-tag advanced">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title">Tools & Technologies</h3>
+                <div class="skill-tags">
+                    {% for skill in data.skills.tools %}
+                        <span class="skill-tag intermediate">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section" role="region" aria-labelledby="cta-heading">
+    <div class="container">
+        <div class="cta-content">
+            <h2 id="cta-heading" class="cta-title">Interested in Collaborating?</h2>
+            <p class="cta-description">I'm always open to discussing new projects, opportunities, or just connecting with fellow developers and tech enthusiasts.</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Get In Touch</a>
+                <a href="mailto:{{ data.contact.email }}" class="btn btn-secondary">Send Email</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

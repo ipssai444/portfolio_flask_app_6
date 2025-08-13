@@ -1,0 +1,162 @@
+{
+  "name": "ISINIGIRI PAVAN SRI SAI",
+  "role": "Computer Science Student & AI Enthusiast",
+  "summary": "Computer science student with strong skills in Python, HTML, and CSS. Passionate about AI, deep learning and natural language processing. Eager to apply technical knowledge and problem-solving abilities in a dynamic tech environment.",
+  "skills": {
+    "languages": [
+      "Python",
+      "C",
+      "Java",
+      "HTML",
+      "CSS"
+    ],
+    "frameworks": [
+      "Flask",
+      "OpenCV"
+    ],
+    "tools": [
+      "Machine Learning",
+      "BERT",
+      "NLP",
+      "RapidAPI",
+      "Tableau",
+      "SMTP"
+    ]
+  },
+  "projects": [
+    {
+      "name": "Crop Veda – AI-Based Agriculture Support System",
+      "date": "MAR 2025",
+      "stack": [
+        "Python",
+        "AI",
+        "Machine Learning",
+        "Web Development"
+      ],
+      "description": "Developed an AI application to help farmers by identifying crops and providing related information.",
+      "responsibilities": [
+        "Developed AI crop identification system",
+        "Integrated user-friendly features",
+        "Implemented web development components"
+      ],
+      "outcomes": [
+        "Created comprehensive agriculture support system",
+        "Enhanced farmer productivity through AI guidance"
+      ],
+      "links": {
+        "code": "#",
+        "demo": "#"
+      }
+    },
+    {
+      "name": "Toxic Comment Detection on Reddit using NLP and BERT",
+      "date": "DEC 2024",
+      "stack": [
+        "Python",
+        "BERT",
+        "NLP",
+        "RapidAPI"
+      ],
+      "description": "Built an AI system to detect toxic Reddit comments using BERT and NLP. It filters harmful comments and saves safe ones.",
+      "responsibilities": [
+        "Implemented BERT-based toxicity detection",
+        "Integrated RapidAPI for data collection",
+        "Developed comment filtering system"
+      ],
+      "outcomes": [
+        "Successfully identified and filtered toxic content",
+        "Improved online safety through automated moderation"
+      ],
+      "links": {
+        "code": "#",
+        "demo": "#"
+      }
+    },
+    {
+      "name": "Automated Number Plate Detection and Alert Notification Generator",
+      "date": "MAR 2023",
+      "stack": [
+        "Python",
+        "OpenCV",
+        "Machine Learning"
+      ],
+      "description": "Built an AI-based system for real-time number plate recognition using OpenCV and OCR. It sends alert notifications via SMTP for traffic violations.",
+      "responsibilities": [
+        "Implemented real-time OCR system",
+        "Developed SMTP notification system",
+        "Created traffic violation detection algorithm"
+      ],
+      "outcomes": [
+        "Achieved real-time number plate recognition",
+        "Automated traffic violation reporting system"
+      ],
+      "links": {
+        "code": "#",
+        "demo": "#"
+      }
+    }
+  ],
+  "experience": [],
+  "education": [
+    {
+      "school": "Kalasalingam Academy of Research and Education",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "specialization": "Artificial Intelligence and Machine Learning",
+      "years": "Expected 2026",
+      "cgpa": "8.66/10.0"
+    },
+    {
+      "school": "SASI NEW GEN. JUNIOR COLLEGE",
+      "degree": "Intermediate Education",
+      "location": "Andhra Pradesh",
+      "years": "2022",
+      "percentage": "87.2%"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Database Management Systems",
+      "issuer": "CodeChef",
+      "description": "Completed all the modules in Database Management Systems"
+    },
+    {
+      "name": "Design and Analysis of Algorithms",
+      "issuer": "CodeChef",
+      "description": "Completed all the modules in Design and Analysis of Algorithms"
+    },
+    {
+      "name": "2024 Tableau Certified Data Analyst Training",
+      "issuer": "Udemy",
+      "year": "2024"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Full Professional Proficiency"
+    },
+    {
+      "language": "Telugu",
+      "proficiency": "Native Proficiency"
+    },
+    {
+      "language": "Tamil",
+      "proficiency": "Limited Working Proficiency"
+    }
+  ],
+  "interests": [
+    "Artificial Intelligence",
+    "Tech Gadgets",
+    "Sustainable Technology"
+  ],
+  "contact": {
+    "email": "pavansrisai444@gmail.com",
+    "phone": "9440485696",
+    "location": "Andhra Pradesh, India",
+    "links": {
+      "linkedin": "Pavan sri sai isinigiri",
+      "github": "#",
+      "portfolio": "#"
+    }
+  }
+}

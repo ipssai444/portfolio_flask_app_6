@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}{{ data.name }} - {{ data.role }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" role="banner">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">{{ data.name }}</span>
+                </h1>
+                <h2 class="hero-subtitle">{{ data.role }}</h2>
+                <p class="hero-description">{{ data.summary }}</p>
+
+                <div class="hero-cta">
+                    <a href="{{ url_for('projects') }}" class="btn btn-primary">View My Work</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#" class="btn btn-outline" download>Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <img src="{{ url_for('static', filename='images/profile-placeholder.jpg') }}" 
+                         alt="Profile photo of {{ data.name }}" 
+                         class="profile-img"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="profile-fallback" style="display: none;">
+                        <span class="profile-initials">{{ data.name.split()[0][0] }}{{ data.name.split()[-1][0] }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Overview Section -->
+<section class="skills-preview" role="region" aria-labelledby="skills-heading">
+    <div class="container">
+        <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-category-title">Languages</h3>
+                <div class="skill-tags">
+                    {% for skill in data.skills.languages %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title">Frameworks & Libraries</h3>
+                <div class="skill-tags">
+                    {% for skill in data.skills.frameworks %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title">Tools & Technologies</h3>
+                <div class="skill-tags">
+                    {% for skill in data.skills.tools %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="featured-projects" role="region" aria-labelledby="projects-heading">
+    <div class="container">
+        <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            {% for project in data.projects[:3] %}
+            <article class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">{{ project.name }}</h3>
+                    <span class="project-date">{{ project.date }}</span>
+                </div>
+                <p class="project-description">{{ project.description }}</p>
+                <div class="project-tech">
+                    {% for tech in project.stack %}
+                        <span class="tech-tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                <div class="project-links">
+                    {% if project.links.code != '#' %}
+                        <a href="{{ project.links.code }}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            View Code
+                        </a>
+                    {% endif %}
+                    {% if project.links.demo != '#' %}
+                        <a href="{{ project.links.demo }}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            Live Demo
+                        </a>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <a href="{{ url_for('projects') }}" class="btn btn-outline">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Contact Section -->
+<section class="quick-contact" role="region" aria-labelledby="contact-heading">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-text">
+                <h2 id="contact-heading" class="section-title">Let's Work Together</h2>
+                <p>I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to chat about technology, feel free to reach out!</p>
+            </div>
+            <div class="contact-cta">
+                <a href="mailto:{{ data.contact.email }}" class="btn btn-primary">Send Email</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary">Contact Form</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

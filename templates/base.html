@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ data.name }} - Portfolio{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ data.summary }}{% endblock %}">
+
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="{% block og_title %}{{ data.name }} - Portfolio{% endblock %}">
+    <meta property="og:description" content="{{ data.summary }}">
+    <meta property="og:type" content="website">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- JSON-LD structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ data.name }}",
+        "jobTitle": "{{ data.role }}",
+        "email": "{{ data.contact.email }}",
+        "telephone": "{{ data.contact.phone }}",
+        "description": "{{ data.summary }}"
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header and Navigation -->
+    <header role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="{{ url_for('index') }}" class="brand-link">{{ data.name }}</a>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                        <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                        <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}" role="alert">
+                            {{ message }}
+                            <button class="flash-close" onclick="this.parentElement.style.display='none'" aria-label="Close message">&times;</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2025 {{ data.name }}. All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="social-links">
+                        <a href="mailto:{{ data.contact.email }}" aria-label="Email" class="social-link">
+                            <span>Email</span>
+                        </a>
+                        {% if data.contact.links.linkedin != '#' %}
+                        <a href="{{ data.contact.links.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                            <span>LinkedIn</span>
+                        </a>
+                        {% endif %}
+                        {% if data.contact.links.github != '#' %}
+                        <a href="{{ data.contact.links.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+                            <span>GitHub</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
