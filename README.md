@@ -59,25 +59,5 @@ $ python app.py
 
 All site content is loaded from `data/resume.json`. Update fields such as skills, projects, contact details, and they will automatically render across pages.
 
-## Deployment
 
-1. **Static Hosting (recommended):**
-   - Use `flask freeze` or tools like *Render* to deploy Flask apps for free.
-2. **VM / VPS Hosting:**
-   - Use `gunicorn` & `nginx` (outside the scope of Task 6, but standard practice).
 
-## Submission
-
-Per Task 6 guidelines, push this folder to a fresh GitHub repository and submit the repo link. Example commands:
-
-```bash
-$ git init
-$ git add .
-$ git commit -m "Elevate Task 6: Portfolio Website"
-$ git branch -M main
-$ git remote add origin <your-github-repo-url>
-$ git push -u origin main
-```
-
----
-Created by **ISINIGIRI PAVAN SRI SAI** | 2025
